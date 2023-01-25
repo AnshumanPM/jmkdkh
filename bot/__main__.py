@@ -34,9 +34,7 @@ def stats(update, context):
         last_commit = check_output(["git log -1 --date=short --pretty=format:'%cd <b>From</b> %cr'"], shell=True).decode()
     else:
         last_commit = 'No UPSTREAM_REPO'
-    stats = f'<b>Commit Date</b>: {last_commit}\n\n'\
-            f'<b>Bot Uptime</b>: {get_readable_time(time() - botStartTime)}\n'\
-            f'<b>OS Uptime</b>: {get_readable_time(time() - boot_time())}\n\n'\
+    stats = f'<b>Bot Uptime</b>: {get_readable_time(time() - botStartTime)}\n'\
             f'<b>Total Disk Space </b>: {get_readable_file_size(total)}\n'\
             f'<b>Used</b>: {get_readable_file_size(used)} | <b>Free</b>: {get_readable_file_size(free)}\n\n'\
             f'<b>Upload</b>: {get_readable_file_size(net_io_counters().bytes_sent)}\n'\
@@ -54,12 +52,9 @@ def stats(update, context):
 
 def start(update, context):
     if config_dict['DM_MODE']:
-        start_string = 'Bot Started.\n' \
-                    'Now I will send your files or links here.\n'
+        start_string = 'Bot Started!'
     else:
-        start_string = '🌹 Welcome To One Of A Modified Anasty Mirror Bot\n' \
-                    'This bot can Mirror all your links To Google Drive!\n' \
-                    '👨🏽‍💻 Powered By: @JMDKH_Team'
+        start_string = 'Bot Started!'
     sendMessage(start_string, context.bot, update.message)
 
 def restart(update, context):
@@ -133,11 +128,6 @@ NOTE: Try each command without any argument to see more detalis.
 /{BotCommands.EvalCommand}: Run Python Code Line | Lines (Only Owner).
 /{BotCommands.ExecCommand}: Run Commands In Exec (Only Owner).
 /{BotCommands.ClearLocalsCommand}: Clear {BotCommands.EvalCommand} or {BotCommands.ExecCommand} locals (Only Owner).
-/{BotCommands.RssListCommand[0]} or /{BotCommands.RssListCommand[1]}: List all subscribed rss feed info (Only Owner & Sudo).
-/{BotCommands.RssGetCommand[0]} or /{BotCommands.RssGetCommand[1]}: Force fetch last N links (Only Owner & Sudo).
-/{BotCommands.RssSubCommand[0]} or /{BotCommands.RssSubCommand[1]}: Subscribe new rss feed (Only Owner & Sudo).
-/{BotCommands.RssUnSubCommand[0]} or /{BotCommands.RssUnSubCommand[1]}: Unubscribe rss feed by title (Only Owner & Sudo).
-/{BotCommands.RssSettingsCommand[0]} or /{BotCommands.RssSettingsCommand[1]} [query]: Rss Settings (Only Owner & Sudo).
 /{BotCommands.RmdbCommand}: Remove task from the database.
 '''
 
