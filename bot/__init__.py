@@ -513,8 +513,7 @@ if path.exists('categories.txt'):
             else:
                 CATEGORY_INDEXES.append('')
 
-if BASE_URL:
-    Popen(f"gunicorn web.wserver:app --bind 0.0.0.0:{SERVER_PORT}", shell=True)
+Popen("gunicorn web.wserver:app", shell=True)
 
 run(["qbittorrent-nox", "-d", "--profile=."])
 if not path.exists('.netrc'):
